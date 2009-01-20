@@ -12,31 +12,18 @@ require 'spec/rake/spectask'
 
 @gem_spec = Gem::Specification.new do |s|
   s.name = "yamler"
-  s.version = "0.0.1"
+  s.version = "0.0.2"
   s.summary = "yamler"
   s.description = "yamler was developed by: markbates"
   s.author = "markbates"
-  s.email = ""
-  s.homepage = ""
-
-  s.test_files = FileList['test/**/*']
-
+  s.email = "mark@mackframework.com"
+  s.homepage = "http://www.mackframework.com"
+  # s.test_files = FileList['test/**/*']
   s.files = FileList['lib/**/*.*', 'README', 'doc/**/*.*', 'bin/**/*.*']
-  s.require_paths << 'lib'
-
-  #s.bindir = "bin"
-  #s.executables << "yamler"
-  #s.default_executable = ""
-  #s.add_dependency("", "")
-  #s.add_dependency("", "")
-  #s.extensions << ""
+  s.require_paths = ['lib']
   s.extra_rdoc_files = ["README"]
   s.has_rdoc = true
-  #s.platform = "Gem::Platform::Ruby"
-  #s.required_ruby_version = ">= 1.8.6"
-  #s.requirements << "An ice cold beer."
-  #s.requirements << "Some free time!"
-  s.rubyforge_project = "yamler"
+  s.rubyforge_project = "magrathea"
 end
 
 # rake package

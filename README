@@ -1,3 +1,14 @@
-README
-========================================================================
-yamler was developed by: markbates
+Yamler - Making YAML easy and fun to use with Ruby
+=========================================================================
+
+Using YAML in Ruby is pretty easy, but I find myself doing several things
+every time I use YAML. First is I always seem to pass it through ERB. The
+other is that I want to pass it a binding, because I want to give it
+access to some variables or methods. Finally I sometimes end up merging
+several YAML files into one file, because other wise it would be too big
+and unwieldy to manage. Enter Yamler:
+
+=== Examples:
+  # This will read the file in, parse it through ERB, and then run it
+  # through YAML#load
+  Yamler.load('/path/to/file.yml')
