@@ -1,0 +1,13 @@
+friends:
+  - Ross
+  - Rachel
+  - Joey
+  - Phoebe
+  - Monica
+  - Chandler
+
+<%= require_yaml('lib/enemies') %>
+
+<%= require_yaml('simple.yml') %>
+
+<%= require_yaml('lib/others.yml') %>
