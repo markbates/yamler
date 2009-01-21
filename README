@@ -9,6 +9,16 @@ several YAML files into one file, because other wise it would be too big
 and unwieldy to manage. Enter Yamler:
 
 === Examples:
-  # This will read the file in, parse it through ERB, and then run it
-  # through YAML#load
+  # Renders said file through ERB, and then through YAML.load:
   Yamler.load('/path/to/file.yml')
+
+  # Does the same as above but makes a method called say_hi
+  # available to the binding of the Yamler::Template instance.
+  Yamler.load('/path/to/file.yml') do
+    def say_hi
+      'hi'
+    end
+  end
+  
+  # Renders said file through ERB, and then through YAML.load:
+  Yamler.load('/path/to/file.yml', {:locals => {:username => 'markbates'}, :foo => :bar})

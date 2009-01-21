@@ -2,10 +2,24 @@ module Yamler
   
   class Template
     
-    attr_accessor :path # :nodoc:
+    # The path of the YAML file to be rendered
+    attr_accessor :path
+    # Options that are available to the YAML file.
     attr_accessor :options
     
     # Takes the path to the YAML file you wish to render.
+    # An optional <tt>Hash</tt> of options can be passed in.
+    # These options are available via the <tt>options</tt> accessor.
+    # If there is a <tt>Hash</tt> in the <tt>options</tt> called
+    # <tt>:locals</tt> then the keys of that <tt>Hash are available</tt>
+    # as local methods.
+    # 
+    # Examples:
+    #   Yamler::Template.new('/path/to/file.yml', {:locals => {:username => 'markbates'}, :foo => :bar})
+    #   
+    #   # in file.yml:
+    #   username: <%= username %> # => 'markbates'
+    #   foo: <%= options[:foo] %> # => :bar
     def initialize(path, options = {})
       self.path = File.expand_path(path)
       self.options = options
@@ -19,7 +33,7 @@ module Yamler
       res
     end
     
-    def method_missing(sym, *args)
+    def method_missing(sym, *args) # :nodoc:
       raise NoMethodError.new(sym.to_s) if self.options[:locals].nil? || self.options[:locals][sym].nil?
       return self.options[:locals][sym]
     end
@@ -43,6 +57,7 @@ module Yamler
       Yamler::Template.new(path).render(binding)
     end
     
+    # Returns the path of the current YAML file.
     def __FILE__
       self.path
     end

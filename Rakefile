@@ -12,7 +12,7 @@ require 'spec/rake/spectask'
 
 @gem_spec = Gem::Specification.new do |s|
   s.name = "yamler"
-  s.version = "0.0.3"
+  s.version = "0.0.4"
   s.summary = "yamler"
   s.description = "yamler was developed by: markbates"
   s.author = "markbates"
