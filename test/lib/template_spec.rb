@@ -48,5 +48,19 @@ others:
     end
     
   end
+  
+  describe 'locals' do
+    
+    it 'should make :locals in the options hash appear as local methods' do
+      template = Yamler::Template.new(yml_path('locals_test'), {:locals => {:username => 'markbates', :password => '123456'}, :foo => :bar})
+      res = template.render
+      res.should == %{
+username: markbates
+password: 123456
+foo: bar
+}.strip
+    end
+    
+  end
 
 end

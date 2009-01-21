@@ -19,8 +19,8 @@ module Yamler
     #       'hi'
     #     end
     #   end
-    def load(path, &block)
-      template = Yamler::Template.new(path) 
+    def load(path, options = {}, &block)
+      template = Yamler::Template.new(path, options) 
       if block_given?
         template.instance_eval(&block)
       end
